@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    {% if user.is_authenticated %}
+        <ul>
+            {% for post in posts %}
+                <li>
+                    <h3><a href="{% url 'show_post' post.id %}">{{ post.title }}</a></h3>
+                    <h5>
+                        {{ post.created_at }}
+                        {% if post.is_edited %}
+                            <i>(edited)</i>
+                        {% endif %}
+                    </h5>
+                    <br>
+                    <p>{{ post.text.html|safe|truncatewords:100 }}</p>
+                </li>
+                <hr>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock %}

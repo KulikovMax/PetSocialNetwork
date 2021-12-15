@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <ul>
+        {% for sub in followers %}
+            <li><a href="{% url 'user_page' sub.user_id%}">{{ sub.user }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    {{ target_user.first_name }} {{ target_user.last_name }}
+    <br>
+    Followers: {{ t_followers|length }}
+    Follows: {{ t_followings|length }}
+    {% if requset_user.id != t_user.id %}
+        {% if requset_user not in t_followers %}
+            <form action="{% url 'follow' target_user.id %}">
+                {% csrf_token %}
+                <button><a href="{% url 'follow' target_user.id %}">Follow</a></button>
+            </form>
+        {% elif requset_user in t_followers %}
+            <form action="{% url 'unfollow' target_user.id %}" method="post">
+                {% csrf_token %}
+                <button><a href="{% url 'unfollow' target_user.id %}">Unfollow</a></button>
+            </form>
+        {% endif %}
+    {% endif %}
+    <br>
+    <hr>
+    {% for post in posts %}
+        <a href="{% url 'show_post' post.id%}">{{ post.title }}</a> <br>
+        {{ post.text.html|safe|truncatewords:50 }}
+    {% endfor %}
+{% endblock %}

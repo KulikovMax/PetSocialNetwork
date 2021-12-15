@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <a href="{% url 'create_post' %}"><input type="button" value="Create New Post"></a>
+    <ul>
+    {% for post in posts %}
+    <li>
+        <h3><a href="{% url 'show_post' post.id %}" style="color:red">{{ post.title }}</a></h3> <br>
+        <h5>By <a href="{% url 'user_page' post.author_id %}">{{ post.author.username }}</a></h5>
+        <hr>
+        <p>{{ post.text.html|safe|truncatewords:50 }} <a href="{% url 'show_post' post.id %}">Read more</a></p>
+        <a href="{% url 'show_post' post.id %}">Read More</a>
+    </li>
+    {% endfor %}
+    </ul>
+{% endblock %}

@@ -1,0 +1,179 @@
+body {
+    background: #fefefc;
+}
+
+p {
+    margin-left: 30px;
+    margin-right: 30px;
+    text-align: left;
+}
+
+
+.top_bar {
+    height: 100px;
+    background: #211f40;
+    font-size: 20px;
+    font-weight: 700;
+    color: white;
+    text-align: center;
+    margin-bottom: 15px;
+}
+.logo{
+    margin-left: 20px;
+    height: 100px;
+    width: 100px;
+}
+.logo img{
+    margin-top: -20px;
+    height: 150px;
+    width: 150px;
+}
+
+nav .menu_dropdown {
+    position: relative;
+    margin-top: 35px;
+    margin-left: 80px;
+}
+
+
+nav .menu_dropdown .menu_links:hover {
+    background: #302d5a;
+    cursor: pointer;
+}
+
+nav .menu_dropdown .menu_links_content {
+    display: none;
+    position: absolute;
+}
+
+nav .menu_dropdown:hover .menu_links_content {
+    width: 100%;
+    display: block;
+    text-align: center;
+    background: rgb(194, 194, 194);
+}
+
+nav .menu_dropdown .menu_links_content a {
+    background: #000;
+    color: gray;
+    padding: 10px 10px;
+    text-decoration: none;
+    display: block;
+}
+
+nav .menu_dropdown .menu_links_content a.index:hover {
+    background: rgb(39, 38, 38);
+    color: #d9d731;
+}
+
+nav .menu_dropdown .menu_links_content a.account:hover {
+    background: rgb(39, 38, 38);
+    color: #2989bd;
+}
+
+nav .menu_dropdown .menu_links_content a.posts:hover {
+    background: rgb(39, 38, 38);
+    color: #a844bd;
+}
+
+nav .menu_dropdown .menu_links_content a.search:hover {
+    background: rgb(39, 38, 38);
+    color: #910c3e;
+}
+
+.profile_text {
+    margin-top: 25px;
+    font-size: 15px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.profile_text .user_text {
+    margin-right: 20px;
+}
+
+.profile_text .user_text .username_span {
+    color: deeppink;
+    margin-right: 10px;
+}
+
+.profile_text .followers {
+    margin-left: 25px;
+}
+
+.profile_text .follow {
+    margin-left: 25px;
+}
+
+.title_block p {
+    text-align: center;
+    text-decoration: underline;
+}
+
+ul{
+    list-style-type: none;
+}
+
+
+.acc_btn {
+    text-align: center;
+    background-color: #08c900;
+    border: 3px solid #00a200;
+    border-radius: 5px;
+    font-family: Roboto sans-serif;
+    font-weight: 500;
+    font-size: 25px;
+    color: #fefefc;
+    size: auto;
+}
+
+.main_text {
+    margin-top: 45px;
+    color: #fefefc;
+    font-family: Roboto serif;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+span.user_real_name {
+    font-weight: 700;
+}
+
+span.user_setting_icon {
+    margin-left: 200px;
+    margin-top: 20px;
+}
+
+span.user_setting_icon img {
+    height: 30px;
+    width: 30px;
+    background-color: white;
+    opacity: 80%;
+    border-radius: 50px;
+}
+
+.account_menu_btn {
+    margin-top: 10px;
+    padding: 3px;
+    text-align: center;
+    color: #fefefc;
+    text-decoration: underline;
+    font-size: 20px;
+    font-weight: 500;
+    font-family: Roboto;
+    /* border: 2px solid #68E544; */
+    border-radius: 10px;
+    background-color: #4468E5;
+    text-shadow: 1px 1px black;
+}
+
+button {
+    margin-bottom: 15px;
+}
+
+.title_block{
+    text-align: center  ;
+}
+span.tips{
+    text-align: center;
+}

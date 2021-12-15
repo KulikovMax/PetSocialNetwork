@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Log-in{% endblock %}
+
+{% block content %}
+    {#    TODO: MAKE REST PASS#}
+    {#    <h1 style="background-color: #d4139acc; font-family: Roboto, serif; color: #fefefc; text-align: center">Log-in</h1>#}
+    <div class="title_block">
+        <h1>Log-in</h1>
+        <p>Please, use the following form to log-in:</p>
+    </div>
+
+    <div class="row">
+        <form action="" method="post" class="offset-md-4">
+            {{ form.as_p }}
+            {% csrf_token %}
+            <p><input type="submit" value="Log-in" class="acc_btn offset-md-5"></p>
+        </form>
+    </div>
+        <div class="row">
+            <a href="{% url 'password_reset' %}" class="offset-md-5 text-center">Forgot your pass?</a>
+           <a href="{% url 'sign_up' %}" class="offset-md-5 text-center">Don't have an account?</a>
+        </div>
+{% endblock %}

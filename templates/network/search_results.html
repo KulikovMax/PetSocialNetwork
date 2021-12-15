@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    {% for user in users %}
+        <a href="{% url 'user_page' user.id %}" style="color: black; text-decoration: none">{{ user.username }}</a>
+        <br>
+    {% endfor %}
+{% endblock %}

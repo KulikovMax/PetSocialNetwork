@@ -1,0 +1,78 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="{% static "css/styles.css" %}" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="/static/css/styles.css"> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+    {% include 'django_quill/media.html' %}
+</head>
+<body>
+<div class="row">
+    <div class="top_bar col-md-12">
+        <div class="row">
+            {% block mainmenu %}
+                <div class="logo"><img src='/static/images/TestSocialNetwork.png' alt="logo"></div>
+                <nav class="col-md-2">
+                    <div class="menu_dropdown">
+                        <div class="menu_links"> MENU</div>
+                        <div class="menu_links_content">
+                            <a href="{% url 'index' %}" class="index">Home</a>
+                            <a href="{% url 'dashboard' %}" class="account">Account</a>
+                            <a href="{% url 'show_recent_posts' %}" class="posts">Posts</a>
+                            <a href="{% url 'search' %}" class="search">Search</a>
+                        </div>
+                    </div>
+
+                </nav>
+            {% endblock %}
+            {% block profile_text %}
+
+                <div class="profile_text col-md-8">
+                    {% if user.is_authenticated %}
+                        <span class="user_text">Hello, <span
+                                class="username_span">{{ user.first_name }} {{ user.last_name }}</span></span>
+                        <span class="followers"><a
+                                href="{% url 'followers' %}">Your Followers: {{ followers.count }}</a></span>
+                        <span class="follow"><a
+                                href="{% url 'followings' %}">You Follow: {{ followings.count }}</a></span>
+                        <span class="user_setting_icon"><a href="{% url 'logout' %}"
+                                                           class="menu_link"><img
+                                src="/media/outline_logout_black_24dp.png"
+                                alt="logout"></a></span>
+                    {% else %}
+                        <span class="user_text">Hello, <span
+                                class="username_span">Guest</span></span>
+                    {% endif %}
+                </div>
+
+            {% endblock %}
+        </div>
+    </div>
+</div>
+
+
+{% block messages %}
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li class="{{ message.tags }}">
+                    {{ message|safe }}
+                    <a href="#" class="close">✖</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock %}
+<div class="container">
+    {% block content %}
+
+    {% endblock %}
+</div>
+</body>
+</html>

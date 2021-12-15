@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    {% if request.user == post.author %}
+    <button><a href="{% url 'edit_post' post.id %}">Edit Post</a></button>
+    {% endif %}
+    <div>
+        <p>Author:<a href="{% url 'user_page' post.author_id %}"> {{ post.author }}</a></p>
+        <p>Created at: {{ post.created_at }} {% if post.is_edited %} <i>(edited)</i>{% endif %}</p>
+        <hr>
+        {{ post.text.html|safe }}
+        <hr>
+        <div class="like-btn">
+            {% if request.user not in post.get_users_liked %}
+                <form action="{% url 'like' post.id %}">
+                    <input type="submit" value="Like!">
+                </form>
+            {% else %}
+                <form action="{% url 'unlike' post.id %}">
+                    <input type="submit" value="Unike!">
+                </form>
+            {% endif %}
+        </div>
+
+        {{ post.likes }}
+    </div>
+{% endblock %}
